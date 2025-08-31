@@ -36,18 +36,19 @@
                   </div>
                 </div>
                 <div class="row">
-<form id="my-form" action="https://formspree.io/f/xqadbedj" method="POST">
-  <div class="form-group">
-    <label for="email">Email:</label>
-    <input class="form-control" type="email" name="email" id="email" required />
-  </div>
-  <div class="form-group">
-    <label for="message">Message:</label>
-    <input class="form-control" type="text" name="message" id="message" required />
-  </div>
-  <div class="form-group text-center">
-    <button id="my-form-button" class="btn btn-default">Submit</button>
-    <p id="my-form-status" class="mt-2"></p>
+<form id="my-form" action="https://formspree.io/f/xqadbedj" method="POST" class="form form-horizontal user-signup__form">
+  <div class="mt-table--full">
+    <div class="mt-td--centered-vertical user-signup__col-1">
+      <div class="user-signup__form-group m-lg-v form-group col-sm-12">
+        <input type="email" name="email" id="email" placeholder="Email" class="form-control form-control__input user-signup__email" required />
+      </div>
+    </div>
+    <div class="mt-td--centered-vertical user-signup__col-2">
+      <div class="user-signup__form-group m-lg-v form-group text-center">
+        <button id="my-form-button" class="btn btn-default submit user-signup__submit"><span>SUBMIT</span></button>
+        <p id="my-form-status" class="mt-2" style="margin-top: 10px;"></p>
+      </div>
+    </div>
   </div>
 </form>
 
