@@ -39,10 +39,15 @@
 <form id="my-form" action="https://formspree.io/f/xqadbedj" method="POST" class="form form-horizontal user-signup__form">
   <div class="mt-table--full">
 <div class="mt-td--centered-vertical user-signup__col-1">
-  <div class="user-signup__form-group m-lg-v form-group col-sm-12">
-    <input type="email" name="email" id="email" placeholder="Email" class="form-control form-control__input user-signup__email" required />
-    <div id="my-form-messages" style="margin-top: 8px;">
-      <div class="message-success" style="display: none; color: #28a745; font-size: 14px;">Thanks for your submission!</div>
+  <div class="user-signup__form-group m-lg-v form-group col-sm-12" style="position: relative;">
+    <input type="email" name="email" id="email" placeholder="Email" 
+           class="form-control form-control__input user-signup__email" required />
+
+    <!-- Messages: positioned absolutely so they don’t shift the layout -->
+    <div id="my-form-messages" style="position: absolute; left: 0; top: 100%; margin-top: 5px; width: 100%;">
+      <div class="message-success" style="display: none; color: #28a745; font-size: 14px;">
+        Thanks for your submission!
+      </div>
       <div class="message-warning" style="display: none; color: #dc3545; font-size: 14px;"></div>
     </div>
   </div>
