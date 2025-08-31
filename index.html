@@ -38,11 +38,16 @@
                 <div class="row">
 <form id="my-form" action="https://formspree.io/f/xqadbedj" method="POST" class="form form-horizontal user-signup__form">
   <div class="mt-table--full">
-    <div class="mt-td--centered-vertical user-signup__col-1">
-      <div class="user-signup__form-group m-lg-v form-group col-sm-12">
-        <input type="email" name="email" id="email" placeholder="Email" class="form-control form-control__input user-signup__email" required />
-      </div>
+<div class="mt-td--centered-vertical user-signup__col-1">
+  <div class="user-signup__form-group m-lg-v form-group col-sm-12">
+    <input type="email" name="email" id="email" placeholder="Email" class="form-control form-control__input user-signup__email" required />
+    <div id="my-form-messages" style="margin-top: 8px;">
+      <div class="message-success" style="display: none; color: #28a745; font-size: 14px;">Thanks for your submission!</div>
+      <div class="message-warning" style="display: none; color: #dc3545; font-size: 14px;"></div>
     </div>
+  </div>
+</div>
+
     <div class="mt-td--centered-vertical user-signup__col-2">
       <div class="user-signup__form-group m-lg-v form-group text-center">
         <button id="my-form-button" class="btn btn-default submit user-signup__submit"><span>SUBMIT</span></button>
