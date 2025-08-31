@@ -46,7 +46,9 @@
     <div class="mt-td--centered-vertical user-signup__col-2">
       <div class="user-signup__form-group m-lg-v form-group text-center">
         <button id="my-form-button" class="btn btn-default submit user-signup__submit"><span>SUBMIT</span></button>
-        <p id="my-form-status" class="mt-2" style="margin-top: 10px;"></p>
+        <div class="message-warning" style="display: none; color: red;"></div>
+<div class="message-success" style="display: none; color: green;">Thanks for your submission!</div>
+
       </div>
     </div>
   </div>
@@ -77,39 +79,49 @@
     </script>
 
     <!-- Your Formspree submission script goes here -->
-    <script>
-      var form = document.getElementById("my-form");
+  <script>
+  var form = document.getElementById("my-form");
 
-      async function handleSubmit(event) {
-        event.preventDefault();
-        var status = document.getElementById("my-form-status");
-        var data = new FormData(event.target);
-        fetch(event.target.action, {
-          method: form.method,
-          body: data,
-          headers: {
-            'Accept': 'application/json'
-          }
-        }).then(response => {
-          if (response.ok) {
-            status.innerHTML = "Thanks for your submission!";
-            form.reset();
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    var success = document.querySelector(".message-success");
+    var warning = document.querySelector(".message-warning");
+
+    // Hide both messages initially
+    success.style.display = "none";
+    warning.style.display = "none";
+
+    var data = new FormData(event.target);
+
+    fetch(event.target.action, {
+      method: form.method,
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        success.style.display = "block";
+        form.reset();
+      } else {
+        response.json().then(data => {
+          if (Object.hasOwn(data, 'errors')) {
+            warning.innerText = data["errors"].map(error => error["message"]).join(", ");
           } else {
-            response.json().then(data => {
-              if (Object.hasOwn(data, 'errors')) {
-                status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-              } else {
-                status.innerHTML = "Oops! There was a problem submitting your form";
-              }
-            });
+            warning.innerText = "Oops! There was a problem submitting your form";
           }
-        }).catch(error => {
-          status.innerHTML = "Oops! There was a problem submitting your form";
+          warning.style.display = "block";
         });
       }
+    }).catch(error => {
+      warning.innerText = "Oops! There was a problem submitting your form";
+      warning.style.display = "block";
+    });
+  }
 
-      form.addEventListener("submit", handleSubmit);
-    </script>
+  form.addEventListener("submit", handleSubmit);
+</script>
   </body>
 </html>
 
